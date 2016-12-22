@@ -1,24 +1,190 @@
-.App {
-  text-align: center;
+html, body {
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.container {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: inline;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.contain {
+    max-width: 940px;
+    margin: 0 2%;
+    padding: 0 10px;
 }
 
-.App-intro {
-  font-size: large;
+.jumbotron {
+    background: url(./scroll_fade.jpg) no-repeat center center;
+    background-size: cover;
+    height: 630px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.header {
+    background-color: #333;
+}
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.nav li {
+    color: #fff;
+    display: inline;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    margin-right: 25px;
+    text-transform: uppercase;
+}
+
+.main {
+    position: relative;
+    top: 100px;
+    width: 60%;
+    text-align: center;
+    float: left;
+}
+
+.main h1 {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 90px;
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+
+.main h2 {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 70px;
+    margin-top: 0;
+    margin-bottom: 80px;
+    text-transform: uppercase;
+}
+
+.btn-main {
+    background-color: #333;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 1.3px;
+    padding: 16px 40px;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-default {
+    border: 1px solid #333;
+    color: #000;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1.3px;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.sign_up {
+    position: relative;
+    top: 70px;
+    float: right;
+    /* background-color: #333333; */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-right: 150px;
+    margin-top: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    line-height: 220%;
+    border-style: solid;
+    border-color: #333333;
+}
+
+.sign_up_text {
+    position: relative;
+    top: 100px;
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    color: #333333;
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-bottom: 130px;
+    margin-top: -90px;
+}
+
+.btn-register {
+    background-color: #333;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1.3px;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-left: 100px;
+}
+
+.sign_up h3 {
+    font-size: 26px;
+    font-weight: 900;
+    text-decoration: underline;
+}
+
+.supporting {
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+
+.supporting .col {
+    float: left;
+    width: 33%;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.supporting img {
+    height: 32px;
+}
+
+.supporting h2 {
+    font-weight: 600;
+    font-size: 23px;
+    text-transform: uppercase;
+}
+
+.supporting p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 50px;
+    margin-bottom: 40px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 13px 0;
+}
+
+.footer p {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
 }

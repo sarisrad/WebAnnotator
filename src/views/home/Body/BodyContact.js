@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Body_Default extends Component {
+export default class BodyContact extends Component {
 
     constructor() {
         super();
@@ -11,10 +11,9 @@ class Body_Default extends Component {
     render() {
         return (
             <div>
-                <h1>Deafult</h1>
+                <h1>Contact</h1>
             </div>
         )
     }
-
-
 } 
+ 

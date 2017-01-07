@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Body_About extends Component {
+export default class BodyMedia extends Component {
 
     constructor() {
         super();
@@ -11,11 +11,9 @@ class Body_About extends Component {
     render() {
         return (
             <div>
-                <h1>About</h1>
+                <h1>Media</h1>
             </div>
         )
     }
-
-
 } 
  

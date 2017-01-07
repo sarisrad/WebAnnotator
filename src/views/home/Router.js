@@ -33,3 +33,5 @@ class Router extends Component {
     }
     
 }
+
+ <li onClick={this.props.navigate('About')}>About</li>

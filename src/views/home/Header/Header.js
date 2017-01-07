@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import '../../../App.css';
 import NavBar from './NavBar.js';
 import Login from './Login.js';
+
 
 export default class Header extends Component {
 

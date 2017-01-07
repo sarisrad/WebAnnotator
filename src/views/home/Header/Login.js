@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import '../../../App.css';
 
-export default class BodySignUp extends Component {
+
+export default class Login extends Component {
 
     constructor() {
         super();
@@ -10,10 +12,10 @@ export default class BodySignUp extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Sign Up</h1>
+            <div className="LoginWrapper">
+                
             </div>
         )
-    }
+    }    
+
 } 
- 

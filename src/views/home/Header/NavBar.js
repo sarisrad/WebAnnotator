@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import FlatButton from 'material-ui/FlatButton';
 
 export default class NavBar extends Component {
 
@@ -11,8 +12,8 @@ export default class NavBar extends Component {
     render() {
         return (
             <div className="NavBarWrapper">
-                <ul>
-                    <li><Link to ="/">Home</Link></li>
+                <ul style={{flex: 1, "flex-flow": "row wrap", "list-style": "none", "flex-direction": "row", display: "flex"}}>
+                    <li><FlatButton ><Link to ="/">Home</Link></FlatButton></li>
                     <li><Link to ="/about">About</Link></li>
                     <li><Link to ="/media">Media</Link></li>
                     <li><Link to ="/publications">Publications</Link></li>

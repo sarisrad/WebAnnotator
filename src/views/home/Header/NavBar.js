@@ -13,13 +13,13 @@ export default class NavBar extends Component {
         return (
             <div className="NavBarWrapper">
                 <ul style={{flex: 1, "flex-flow": "row wrap", "list-style": "none", "flex-direction": "row", display: "flex"}}>
-                    <li><FlatButton ><Link to ="/">Home</Link></FlatButton></li>
-                    <li><Link to ="/about">About</Link></li>
-                    <li><Link to ="/media">Media</Link></li>
-                    <li><Link to ="/publications">Publications</Link></li>
-                    <li><Link to ="/contact">Contact</Link></li>
-                    <li><Link to ="/signup">Sign Up</Link></li>
-                    <li><Link to ="/livedemo">Live Demo</Link></li>
+                    <li><FlatButton><Link to ="/">Home</Link></FlatButton></li>
+                    <li><FlatButton><Link to ="/about">About</Link></FlatButton></li>
+                    <li><FlatButton><Link to ="/media">Media</Link></FlatButton></li>
+                    <li><FlatButton><Link to ="/publications">Publications</Link></FlatButton></li>
+                    <li><FlatButton><Link to ="/contact">Contact</Link></FlatButton></li>
+                    <li><FlatButton><Link to ="/signup">Sign Up</Link></FlatButton></li>
+                    <li><FlatButton><Link to ="/livedemo">Live Demo</Link></FlatButton></li>
                 </ul>
             </div>
         );

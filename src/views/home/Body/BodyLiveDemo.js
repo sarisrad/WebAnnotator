@@ -15,5 +15,5 @@ export default class BodyLiveDemo extends Component {
             </div>
         )
     }
-} 
- 
+}
+

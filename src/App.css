@@ -1,306 +1,85 @@
 
-
-.HeaderWrapper{
-    background-color: #333;
-    padding: 1px;
+.App_HeaderComponent{
+    background-color: #333; 
+    height: 50px;
+    color: white; 
 }
 
-.NavBarWrapper {
-    list-style-type: none;
+.App_BodyComponent{
+    align-content: space-around;
+    flex-direction: row;
+    display: flex;
+    background-color: rgb(210,198,184); 
+    background-size: cover;
+ } 
+
+ .App_BodyChildrenComponent{
+    width: 1000px;
+    flex: 4;
+ }
+
+  .App_FooterComponent{
+    flex: 1;
+    background-color: #333; 
+    height: 50px;
+    color: white;
 }
 
-.NavBarWrapper li {
-    color: #fff;    
-    display: inline;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    margin-right: 25px;
-    text-transform: uppercase;
-}
-
-.FooterWrapper{
-    background-color: #333;
-    padding: 25px;
-    
-}
-
-.FooterWrapper p {
-    color: #fff;    
-    font-family: 'Raleway', sans-serif;
-    font-weight: 200;
-    font-size: 11px;
-    margin-left: 25px;
-    display: inline;
-
-   
-}
-
-
-.HomeWrapper {
+.BodyHome{
     background: url(./img/scroll_fade.jpg) no-repeat center center;
     background-size: cover;
-    height: 641px;
-    margin: 0 auto;
-    padding: 0 30px;
-    position: relative;
-    width: 100%;
-    text-align: center;
-    float: left;
-
-    
-
-    
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    flex-direction: row;
 }
 
-.HomeWrapper h1 {
-    color: #333;
+
+.BodyHome_Headers{
+    flex:1;
+    float: left;
+}
+
+.BodyHome_Headers h1{
     font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-size: 100px;
+    text-align: center;
+}
+
+.BodyHome_Headers h2{
     font-size: 80px;
-    margin-top: 0;
-    margin-bottom: 80px;
-    float: left;
+    width: 1000px;
     text-align: center;
 }
 
-.HomeWrapper h2 {
-    color: #333;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 60px;
-    margin-top: 0;
-    margin-bottom: 80px;
-    text-transform: uppercase;
-    float: left;
-    text-align: center;
+.BodyHome_SignUpComponent{
+    flex: 1;
 }
 
-.SignUpWrapper {
-    position: relative;
-    top: 70px;
+.SignUp{
+    text-align: center;
     float: right;
-    /* background-color: #333333; */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    margin-right: 150px;
-    margin-top: 10px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    line-height: 220%;
+    margin-top: 60px;
+    margin-right: 90px;
+    margin-bottom: 60px;  
+    width: 400px; 
     border-style: solid;
-    border-color: #333333;
-
+    border-color: #333333;  
 }
 
-.SignUpWrapper h1 {
-    font-size: 26px;
-    font-weight: 900;
-    text-decoration: underline;
-
+.Header{
+    flex: 1;
+    flex-direction: row;
 }
 
-.SignUpWrapper h2 {
-    font-size: 18px;
-    font-weight: 900;
-    text-decoration: underline;
+.Header_NavBarComponent{
+    flex-direction: row;
+    flex: 3
+}
 
+.Header_LoginComponent{
+    flex-direction: row;
+    flex: 1
 }
 
 
 
-
-
-
-
-
-
-html, body {
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 940px;
-    margin: 0 auto;
-    padding: 0 10px;
-    display: inline;
-}
-
-.contain {
-    max-width: 940px;
-    margin: 0 2%;
-    padding: 0 10px;
-}
-
-.jumbotron {
-    background: url(./img/scroll_fade.jpg) no-repeat center center;
-    background-size: cover;
-    height: 630px;
-}
-
-.header {
-    background-color: #333;
-}
-
-.nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 20px 0;
-}
-
-.nav li {
-    color: #fff;
-    display: inline;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    margin-right: 25px;
-    text-transform: uppercase;
-}
-
-.main {
-    position: relative;
-    top: 100px;
-    width: 60%;
-    text-align: center;
-    float: left;
-}
-
-.main h1 {
-    color: #333;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 90px;
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-
-.main h2 {
-    color: #333;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 70px;
-    margin-top: 0;
-    margin-bottom: 80px;
-    text-transform: uppercase;
-}
-
-.btn-main {
-    background-color: #333;
-    color: #fff;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: 1.3px;
-    padding: 16px 40px;
-    text-decoration: none;
-    text-transform: uppercase;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.btn-default {
-    border: 1px solid #333;
-    color: #000;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 10px;
-    letter-spacing: 1.3px;
-    padding: 10px 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.sign_up {
-    position: relative;
-    top: 70px;
-    float: right;
-    /* background-color: #333333; */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    margin-right: 150px;
-    margin-top: 10px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    line-height: 220%;
-    border-style: solid;
-    border-color: #333333;
-}
-
-.sign_up_text {
-    position: relative;
-    top: 100px;
-    text-align: left;
-    font-family: 'Raleway', sans-serif;
-    color: #333333;
-    margin-right: 40px;
-    margin-left: 40px;
-    margin-bottom: 130px;
-    margin-top: -90px;
-}
-
-.btn-register {
-    background-color: #333;
-    color: #fff;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 1.3px;
-    padding: 10px 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    margin-left: 100px;
-}
-
-.sign_up h3 {
-    font-size: 26px;
-    font-weight: 900;
-    text-decoration: underline;
-}
-
-.supporting {
-    padding-top: 80px;
-    padding-bottom: 100px;
-}
-
-.supporting .col {
-    float: left;
-    width: 33%;
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-}
-
-.supporting img {
-    height: 32px;
-}
-
-.supporting h2 {
-    font-weight: 600;
-    font-size: 23px;
-    text-transform: uppercase;
-}
-
-.supporting p {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    padding: 0 50px;
-    margin-bottom: 40px;
-}
-
-.clearfix {
-    clear: both;
-}
-
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 13px 0;
-}
-
-.footer p {
-    font-family: 'Raleway', sans-serif;
-    text-transform: uppercase;
-    font-size: 11px;
-}

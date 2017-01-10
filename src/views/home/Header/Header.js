@@ -14,11 +14,15 @@ export default class Header extends Component {
 
     render() {
         return (
-            <div className="HeaderWrapper">
-                <NavBar />
-                <Login />
+            <div className="Header">
+                <div className="Header_NavBarComponent">
+                    <NavBar />
+                </div>
+                <div className="Header_LoginComponent">
+                    <Login />
+                </div>
             </div>
         )
-    }    
+    }
 
 }

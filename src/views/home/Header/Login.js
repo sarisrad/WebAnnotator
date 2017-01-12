@@ -20,11 +20,11 @@ export default class Login extends Component {
     // !!!WARNING!!!  Needs to be corrected Because this function is not in "this" scope
     reqListener () {
         console.log(this.responseText);
-        if(this.responseText !== "None"){
-            this.state.user_email = this.responseText;
-            this.state.logged_in = true;
-        }
-        console.log(this.state.user_email);
+        // if(this.responseText !== "None"){
+        //     this.state.user_email = this.responseText;
+        //     this.state.logged_in = true;
+        // }
+        // console.log(this.state.user_email);
     }
 
     loginUser(){

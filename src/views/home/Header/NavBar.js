@@ -18,7 +18,6 @@ export default class NavBar extends Component {
                     <li><FlatButton><Link to ="/media">Media</Link></FlatButton></li>
                     <li><FlatButton><Link to ="/publications">Publications</Link></FlatButton></li>
                     <li><FlatButton><Link to ="/contact">Contact</Link></FlatButton></li>
-                    <li><FlatButton><Link to ="/signup">Sign Up</Link></FlatButton></li>
                     <li><FlatButton><Link to ="/livedemo">Live Demo</Link></FlatButton></li>
                 </ul>
             </div>

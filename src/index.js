@@ -8,6 +8,8 @@ import Media from './views/home/Body/BodyMedia';
 import Publications from './views/home/Body/BodyPublications';
 import Contact from './views/home/Body/BodyContact';
 import LiveDemo from './views/home/Body/BodyLiveDemo';
+import Login from './views/home/Body/BodyStartWork';
+import StartWorking from './views/home/Body/BodyWorkSpace';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './index.css';
@@ -30,8 +32,11 @@ ReactDOM.render(
           <Route path="publications" component={Publications}/>
           <Route path="contact" component={Contact}/>
           <Route path="livedemo" component={LiveDemo}/>
+          <Route path="startworking" component={Login}/>
+          <Route path="workspace" component={StartWorking}/>
       </Route>
     </Router>
   </MuiThemeProvider>,
   document.getElementById('root')
 );
+

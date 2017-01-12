@@ -11,8 +11,6 @@ export default class Login extends Component {
         super();
         this.state = {
             server_address:"http://127.0.0.1:8000/login_user/",
-            logged_in: false,
-            user_email: ""
         }
     }
 
@@ -21,13 +19,18 @@ export default class Login extends Component {
     reqListener () {
         console.log(this.responseText);
         if(this.responseText !== "None"){
-            this.state.user_email = this.responseText;
-            this.state.logged_in = true;
+            window.alert("Incorrect email or password, please try again.")
         }
-        console.log(this.state.user_email);
+        else{
+            this.props.handler()
+        }
+        
     }
 
     loginUser(){
+
+        this.props.handler();
+
         //Getting the values of the inputs from the boxes and insert it into 
         var email_obj = document.getElementById("login_email_box");
         var password_obj = document.getElementById("login_password_box");
@@ -37,7 +40,7 @@ export default class Login extends Component {
         user_login_info_dict["email"] = email_obj.value;
         user_login_info_dict["password"] = password_obj.value;
 
-        window.alert(JSON.stringify(user_login_info_dict))
+        
 
         //Sending the registered user info to the server
         var oReq = new XMLHttpRequest();
@@ -52,9 +55,12 @@ export default class Login extends Component {
     render() {
         return (
             <div className="Login">
-                 <TextField id="login_email_box" hintText="Email" />
-                 <TextField id="login_password_box" hintText="Password" />
-                 <FlatButton onClick={() => this.loginUser()}>Login</FlatButton>
+                <ul style={{flex: 1, "flex-flow": "row wrap", "list-style": "none", "flex-direction": "row", display: "flex"}}>
+                    <li><TextField id="login_email_box" hintText="Email" /></li>
+                    <li><TextField id="login_password_box" hintText="Password" /></li>
+                    <li><FlatButton onClick={() => {this.loginUser()}}><Link to ="/startworking">Login</Link></FlatButton></li>
+                 </ul>   
+                 
             </div>
         )
     }

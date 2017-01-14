@@ -18,11 +18,11 @@ export default class Login extends Component {
     // !!!WARNING!!!  Needs to be corrected Because this function is not in "this" scope
     reqListener () {
         console.log(this.responseText);
-        if(this.responseText !== "None"){
+        if(this.responseText == "None"){
             window.alert("Incorrect email or password, please try again.")
         }
         else{
-            this.props.handler()
+            this.props.handler();
         }
         
     }

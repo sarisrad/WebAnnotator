@@ -1,0 +1,59 @@
+<html>
+<meta charset='utf-8'/>
+	<link type="text/css" rel="stylesheet" href="css/annotorious.css" />
+	 <script type="text/javascript" src="annotorious.min.js"></script>
+
+	<script>
+	
+	  function init() {
+	    var first_anno;
+	    first_anno = anno.makeAnnotatable(document.getElementById('MyImage'));
+
+	    var http_anno;
+
+	    var myAnnotation = {
+	        /** The URL of the image where the annotation should go **/
+	        src : './dog.jpg',
+
+	        /** The annotation text **/
+	        text : 'My annotation',
+
+	        /** The annotation shape **/
+	        shapes : [{
+	            /** The shape type **/
+	            type : 'rect',
+
+	            /** The shape geometry (relative coordinates) **/
+	            geometry : { x : 0.1, y: 0.1, width : 0.4, height: 0.3 }
+	        }]
+	    }
+
+
+	    var myAnnotation2 = {
+	        /** The URL of the image where the annotation should go **/
+	        src : './dog.jpg',
+
+	        /** The annotation text **/
+	        text : 'My annotation2',
+
+	        /** The annotation shape **/
+	        shapes : [{
+	            /** The shape type **/
+	            type : 'rect',
+
+	            /** The shape geometry (relative coordinates) **/
+	            geometry : { x : 0.5, y: 0.1, width : 0.4, height: 0.3 }
+	        }]
+	    }
+
+   		anno.addAnnotation(myAnnotation, first_anno);
+   		anno.addAnnotation(myAnnotation2, first_anno);
+		
+
+	  }
+	</script>
+
+	<body onload="init();">
+			<img src="dog.jpg"  id = "MyImage" />
+	</body>
+</html>

@@ -8,19 +8,13 @@ import Media from './views/home/Body/BodyMedia';
 import Publications from './views/home/Body/BodyPublications';
 import Contact from './views/home/Body/BodyContact';
 import LiveDemo from './views/home/Body/BodyLiveDemo';
-import Login from './views/home/Body/BodyStartWorking';
-import StartWorking from './views/home/Body/BodyWorkSpace';
+import WorkSpaceWrapper from './views/home/Body/BodyWorkSpaceWrapper';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './index.css';
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-
-function registerUser() {
-    var form = document.getElementById(("user_registration_form"));
-    var data = JSON.stringify(form.serializeArray());
-    console.log(data);
-}
 
 ReactDOM.render(
   <MuiThemeProvider>
@@ -32,8 +26,7 @@ ReactDOM.render(
           <Route path="publications" component={Publications}/>
           <Route path="contact" component={Contact}/>
           <Route path="livedemo" component={LiveDemo}/>
-          <Route path="startworking" component={Login}/>
-          <Route path="workspace" component={StartWorking}/>
+          <Route path="startworking" component={WorkSpaceWrapper}/>          
       </Route>
     </Router>
   </MuiThemeProvider>,

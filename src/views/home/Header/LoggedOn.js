@@ -13,6 +13,7 @@ export default class LoggedOn extends Component {
             <div className="LoggedOn">
                 <ul style={{flex: 1, "flex-flow": "row wrap", "list-style": "none", "flex-direction": "row", display: "flex"}}>
                     <li>Logged</li>
+                    <button onClick={this.props.disconnectUser.bind(this)}> Disconnect </button>
                  </ul>   
             </div>
         )

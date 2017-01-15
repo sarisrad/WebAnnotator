@@ -126,33 +126,6 @@ export default class BodyStartWorking extends Component {
         }
     }
 
-//     searchPage() {
-
-// //        this.props.handler();
-
-//         //Getting the values of the inputs from the boxes and insert it into 
-//         var coll_obj = document.getElementById("auto_comp_coll");
-//         var ms_obj = document.getElementById("auto_comp_ms");
-//         var pg_obj = document.getElementById("auto_comp_pg");
-
-//         //The actual insertion into the dictionary in order to send it as HTTPRequest (JSON format)
-//         var search_info_dict = {};
-//         search_info_dict["collection"] = coll_obj.value;
-//         search_info_dict["manuscript"] = ms_obj.value;
-//         search_info_dict["page_title"] = pg_obj.value;
-//         //TODO: Fix it!!!!!!
-//         search_info_dict["user_email"] = "a";
-
-//         //Sending the registered user info to the server
-//         var oReq = new XMLHttpRequest();
-//         oReq.addEventListener("load",(req)=>{this.reqSearchPageListener(req,this);},false);
-//         oReq.open("POST", this.state.server_address.concat("get_annotations/"));
-//         oReq.send(JSON.stringify(search_info_dict));
-
-//         return false;
-
-//     }
-
     searchPage(){
         //Getting the values of the inputs from the boxes and insert it into 
         var coll_obj = document.getElementById("auto_comp_coll");
@@ -162,13 +135,9 @@ export default class BodyStartWorking extends Component {
         window.open(this.state.server_address.concat("get_annotation_html/?collection=" + coll_obj.value +
                                                                             "&manuscript=" + ms_obj.value +
                                                                             "&page=" + pg_obj.value +
-                                                                            "&user=" + "a"));
+                                                                            "&user=" + this.props.getConnectedUser()));
     }
 
-    //TODO: Remove this function! only for testing
-    test(){
-        console.log(this.props.router.push("/workspace"));
-    }
     render() {
         return (
             <div className="StartWorking">
@@ -202,7 +171,6 @@ export default class BodyStartWorking extends Component {
                     <br /><br /><br /><br /><br /><br /><br /><br />
                 </div>
                 <div className="StartWorking_GoToWorkSpace" />
-                <button onClick={this.test.bind(this)}> Test </button>
                 <h2> Choose Page to work on</h2>
                 <AutoComplete id="auto_comp_coll" dataSource={this.getCollectionsNames()} openOnFocus={true} hintText="Choose Collection" />
                 <AutoComplete id="auto_comp_ms" dataSource={this.getRelevantMSs()} openOnFocus={true} hintText="Choose Manuscript" />

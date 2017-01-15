@@ -7,16 +7,49 @@ import Footer from './Footer/Footer.js'
 
 export default class App extends Component {
 
-    render() {
+    //Notes: 1. If the current_user is "" then nobody is connected
+    constructor() {
+        super();
+        this.state = {
+            current_user_email: "",
+        }
+    }
 
+    connectUser(user_email) {
+        this.setState({
+            current_user_email: user_email,
+        }
+        );
+    }
+
+    disconnectUser() {
+        this.setState({
+            current_user_email: "",
+        });
+    }
+
+    isConnected() {
+        return (!(this.state.current_user_email == ""));
+    }
+
+    getConnectedUser() {
+        return this.state.current_user_email;
+    }
+
+    render() {
         return (
             <div className="App">
                 <div className="App_HeaderComponent">
-                    <Header />
+                    <Header connectUser={this.connectUser.bind(this)} disconnectUser={this.disconnectUser.bind(this)} isConnected={this.isConnected.bind(this)} />
                 </div>
                 <div className="App_BodyComponent">
                     <div className="App_BodyChildrenComponent">
-                            {this.props.children}
+                        {React.cloneElement(this.props.children, {
+                            connectUser: this.connectUser.bind(this),
+                            disconnectUser: this.connectUser.bind(this),
+                            isConnected: this.isConnected.bind(this),
+                            getConnectedUser: this.getConnectedUser.bind(this)
+                        })}
                     </div>
                 </div>
                 <div className="App_FooterComponent">

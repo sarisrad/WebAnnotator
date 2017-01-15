@@ -3,7 +3,7 @@ import '../../../App.css';
 import NavBar from './NavBar.js';
 import Login from './Login.js';
 import LoggedOn from './LoggedOn.js';
-
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
 export default class Header extends Component {
 
@@ -17,14 +17,20 @@ export default class Header extends Component {
     render() {
         let loginState = this.props.isConnected() ? <LoggedOn {...this.props}/> : <Login {...this.props}/>;
         return (
-            <div className="Header">
-                <div className="Header_NavBarComponent">
+            <Toolbar>
+                <ToolbarGroup firstChild="true">
                     <NavBar {...this.props}/>
-                </div>
-                <div className="Header_LoginComponent">
+                </ToolbarGroup>
+                <ToolbarGroup lastChild="true">
                     {loginState}
-                </div>
-            </div>
+                </ToolbarGroup>                
+            </Toolbar>
+            // <div className="Header">
+            //     <div className="Header_NavBarComponent">
+            //     </div>
+            //     <div className="Header_LoginComponent">
+            //     </div>
+            // </div>
         )
     }
 

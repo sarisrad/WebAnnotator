@@ -39,7 +39,7 @@
 
 .BodyHome{
     height: 650px;
-    background: url(./img/scroll_fade.jpg) no-repeat center center;
+    background: lightslategrey;
     background-size: cover;
     font-family: 'Raleway', sans-serif;
     display: flex;

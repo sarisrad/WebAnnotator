@@ -26,10 +26,9 @@ ReactDOM.render(
           <Route path="publications" component={Publications}/>
           <Route path="contact" component={Contact}/>
           <Route path="livedemo" component={LiveDemo}/>
-          <Route path="startworking" component={WorkSpaceWrapper}/>          
+          <Route path="startworking" component={WorkSpaceWrapper}/>
       </Route>
     </Router>
   </MuiThemeProvider>,
   document.getElementById('root')
 );
-

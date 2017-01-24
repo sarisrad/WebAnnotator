@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import '../../App.css';
 import Header from './Header/Header.js';
 import Footer from './Footer/Footer.js'
-
+import { Row, Grid, Col } from 'react-bootstrap';
 
 export default class App extends Component {
 
@@ -37,30 +37,31 @@ export default class App extends Component {
         return this.state.current_user_email;
     }
 
-    getServerAddress(){
+    getServerAddress() {
         return this.state.server_address;
     }
 
     render() {
         return (
-            <div className="App">
-                <div className="App_HeaderComponent">
-                    <Header getServerAddress={this.getServerAddress.bind(this)} connectUser={this.connectUser.bind(this)} disconnectUser={this.disconnectUser.bind(this)} isConnected={this.isConnected.bind(this)} />
-                </div>
-                <div className="App_BodyComponent">
-                    <div className="App_BodyChildrenComponent">
-                        {React.cloneElement(this.props.children, {
-                            connectUser: this.connectUser.bind(this),
-                            disconnectUser: this.connectUser.bind(this),
-                            isConnected: this.isConnected.bind(this),
-                            getConnectedUser: this.getConnectedUser.bind(this)
-                        })}
-                    </div>
-                </div>
+            <Grid>
+                <Row className="show-grid">
+                    <Col md={12}>
+                        <Header getServerAddress={this.getServerAddress.bind(this)} connectUser={this.connectUser.bind(this)} disconnectUser={this.disconnectUser.bind(this)} isConnected={this.isConnected.bind(this)} />
+                    </Col>
+                </Row>
+                <br/><br/>
+                <Row className="show-grid">
+                    {React.cloneElement(this.props.children, {
+                        connectUser: this.connectUser.bind(this),
+                        disconnectUser: this.connectUser.bind(this),
+                        isConnected: this.isConnected.bind(this),
+                        getConnectedUser: this.getConnectedUser.bind(this)
+                    })}
+                </Row>
                 <div className="App_FooterComponent">
                     <Footer />
                 </div>
-            </div>
+            </Grid>
         )
     }
 }

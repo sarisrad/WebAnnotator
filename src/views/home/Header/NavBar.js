@@ -7,6 +7,9 @@ export default class NavBar extends Component {
 
     constructor() {
         super();
+        this.state= {
+            activeKey:2
+        }
     }
 
     handleSelect(selectedKey) {
@@ -27,11 +30,12 @@ export default class NavBar extends Component {
                 browserHistory.push('/contact');
                 break;                
         }
+        this.setState({activeKey:selectedKey});
     }
 
     render() {
         return (
-            <Nav bsStyle="pills" activeKey={1} onSelect={this.handleSelect.bind(this)} navbar={true}>
+            <Nav bsStyle="pills" activeKey={this.state.activeKey} onSelect={this.handleSelect.bind(this)} navbar={true}>
                 <NavItem eventKey={1}>Home</NavItem>
                 <NavItem eventKey={2}>About</NavItem>
                 <NavItem eventKey={3}>Media</NavItem>

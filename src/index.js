@@ -10,14 +10,9 @@ import Contact from './views/home/Body/BodyContact';
 import LiveDemo from './views/home/Body/BodyLiveDemo';
 import StartWorking from './views/home/Body/BodyStartWorking';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import './index.css';
-
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 ReactDOM.render(
-  <MuiThemeProvider>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
           <IndexRoute component={Home}/>
@@ -28,7 +23,6 @@ ReactDOM.render(
           <Route path="livedemo" component={LiveDemo}/>
           <Route path="startworking" component={StartWorking}/>
       </Route>
-    </Router>
-  </MuiThemeProvider>,
-  document.getElementById('root')
+    </Router>,
+    document.getElementById('root')
 );

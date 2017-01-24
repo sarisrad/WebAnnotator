@@ -8,7 +8,6 @@ import Menu from 'material-ui/Menu';
 import FlatButton from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem';
 
-
 export default class BodyStartWorking extends Component {
 
     constructor() {

@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import '../../../App.css';
-import TextField from 'material-ui/TextField';
-import AutoComplete from 'material-ui/AutoComplete';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import Menu from 'material-ui/Menu';
-import FlatButton from 'material-ui/FlatButton';
-import MenuItem from 'material-ui/MenuItem';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, Form, Button, Navbar, Grid, Row, Col, Text } from 'react-bootstrap'
 
 export default class BodyStartWorking extends Component {
 
@@ -14,39 +8,9 @@ export default class BodyStartWorking extends Component {
         super();
         this.state = {
             server_address: "http://127.0.0.1:8000/",
+            work_page: {}
         }
     }
-
-    //Used for Auto-complete lists 
-    getCollectionsNames() {
-        var coll_names = [
-            "Coll1", "Coll2", "Coll3"
-        ];
-        return coll_names;
-    }
-
-    getRelevantMSs() {
-        var relevant_mss = [
-            "MS1", "MS2", "MS3"
-        ];
-        return relevant_mss;
-    }
-
-    getRelevantPGs() {
-        var relevant_pgs = [
-            "PG1", "PG2", "PG3"
-        ];
-        return relevant_pgs;
-    }
-
-    getAvailableLanguages() {
-        var available_languages = [
-            "Hebrew", "Arabic", "Aramaic"
-        ];
-        return available_languages;
-    }
-
-
 
     //Adding new Collection/MS/Page to the DB
     reqAddCollectionListener() {
@@ -112,70 +76,89 @@ export default class BodyStartWorking extends Component {
 
         return false;
     }
-    
-    reqSearchPageListener(req,calling_obj) {
+
+    reqSearchPageListener(req, calling_obj) {
         console.log(req.target.responseText);
         var response_json = JSON.parse(req.target.responseText);
-        if(response_json["status"] != "FAIL"){        
-            calling_obj.props.loadWorkSpace(response_json["value"]);     
+        if (response_json["status"] != "FAIL") {
+            calling_obj.props.loadWorkSpace(response_json["value"]);
         }
-        else{
+        else {
             window.alert("ERROR: ".concat(response_json["value"]));
         }
     }
 
-    searchPage(){
-        //Getting the values of the inputs from the boxes and insert it into 
-        var coll_obj = document.getElementById("auto_comp_coll");
-        var ms_obj = document.getElementById("auto_comp_ms");
-        var pg_obj = document.getElementById("auto_comp_pg");      
+    searchPage() {
         //------------------Opens the annotation edit page in a new window--------------------//  
-        window.open(this.state.server_address.concat("get_annotation_html/?collection=" + coll_obj.value +
-                                                                            "&manuscript=" + ms_obj.value +
-                                                                            "&page=" + pg_obj.value +
-                                                                            "&user=" + this.props.getConnectedUser()));
+        window.open(this.state.server_address.concat("get_annotation_html/?collection=" + this.state.work_page["collection"] +
+            "&manuscript=" + this.state.work_page["manuscript"] +
+            "&page=" + this.state.work_page["page"] +
+            "&user=" + this.props.getConnectedUser()));
+    }
+
+    handleChange(e) {
+        switch (e.target.name) {
+            case "collection":
+                this.state.work_page["collection"] = e.target.value;
+                break;
+            case "manuscript":
+                this.state.work_page["manuscript"] = e.target.value;
+                break;
+            case "page":
+                this.state.work_page["page"] = e.target.value;
+                break;
+        }
     }
 
     render() {
         return (
-            <div className="StartWorking">
+            <Grid>
                 <h1>Start Working</h1>
                 <br /><br />
-                <div className="StartWorking_Adding">
-                    <h2> Adding Collection, Manuscript or Page</h2>
-
-                    <div className="StartWorking_AddCollection">
-                        <h4>Add Collection: </h4>
-                        <TextField id="collection_name_box" hintText="Collection Name" />
-                        <FlatButton onClick={() => this.addCollection()}>Add</FlatButton>
-                    </div>
-                    <br /><br />
-                    <div className="StartWorking_AddManuscript">
-                        <h4>Add Manuscript: </h4>
-                        <AutoComplete id="auto_comp_coll_add_ms" dataSource={this.getCollectionsNames()} openOnFocus={true} hintText="Choose Collection" />
-                        <AutoComplete id="auto_comp_lang_add_ms" dataSource={this.getAvailableLanguages()} openOnFocus={true} hintText="Choose Language" />
-                        <TextField id="ms_name_box" hintText="Manuscript Name" />
-                        <FlatButton onClick={() => this.addManuscript()}>Add</FlatButton>
-                    </div>
-                    <br /><br />
-                    <div className="StartWorking_AddPage">
-                        <h4>Add Manuscript: </h4>
-                        <AutoComplete id="auto_comp_coll_add_page" anchorOrigin={{ vertical: 'top', horizontal: 'left', }} dataSource={this.getCollectionsNames()} openOnFocus={true} hintText="Choose Collection" />
-                        <AutoComplete id="auto_comp_ms_add_page" anchorOrigin={{ vertical: 'top', horizontal: 'left', }} dataSource={this.getRelevantMSs()} openOnFocus={true} hintText="Choose Manuscript" />
-                        <TextField id="p_title_box" hintText="Page Title" />
-                        <TextField id="p_url_box" hintText="Image URL" />
-                        <FlatButton onClick={() => this.addPage()}>Add</FlatButton>
-                    </div>
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                </div>
-                <div className="StartWorking_GoToWorkSpace" />
-                <h2> Choose Page to work on</h2>
-                <AutoComplete id="auto_comp_coll" dataSource={this.getCollectionsNames()} openOnFocus={true} hintText="Choose Collection" />
-                <AutoComplete id="auto_comp_ms" dataSource={this.getRelevantMSs()} openOnFocus={true} hintText="Choose Manuscript" />
-                <AutoComplete id="auto_comp_pg" dataSource={this.getRelevantPGs()} openOnFocus={true} hintText="Choose Page" />
-                <FlatButton onClick={this.searchPage.bind(this)}><Link to="/workspace">Start Working</Link></FlatButton>
-                <br /><br /><br /><br /><br /><br /><br /><br />
-            </div>
+                <Row>
+                    <Col md={5}>
+                        <FormGroup>
+                            <Row>
+                                <Col md={8}>
+                                    <FormControl
+                                        type="text"
+                                        value={this.state.work_page["collection"]}
+                                        placeholder="Collection"
+                                        name="collection"
+                                        onChange={this.handleChange.bind(this)}
+                                        />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={8}>
+                                    <FormControl
+                                        type="text"
+                                        value={this.state.work_page["manuscript"]}
+                                        placeholder="Manuscript"
+                                        name="manuscript"
+                                        onChange={this.handleChange.bind(this)}
+                                        />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={8}>
+                                    <FormControl
+                                        type="text"
+                                        value={this.state.work_page["page"]}
+                                        placeholder="Page"
+                                        name="page"
+                                        onChange={this.handleChange.bind(this)}
+                                        />
+                                </Col>
+                                <Col>
+                                    <Button bsSize="medium" onClick={this.searchPage.bind(this)}>OK</Button>
+                                </Col>
+                            </Row>
+                            <FormControl.Feedback />
+                        </FormGroup>
+                    </Col>
+                </Row>
+            </Grid>
         )
     }
 }

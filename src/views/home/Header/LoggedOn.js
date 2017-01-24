@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import '../../../App.css';
-import IconButton from 'material-ui/IconButton';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, Form, Button, Navbar } from 'react-bootstrap'
+import {browserHistory} from 'react-router';
 
 
 export default class LoggedOn extends Component {
-     
 
+    logOut() {
+        this.props.disconnectUser();
+        browserHistory.push('/');
+    }
 
     render() {
         return (
-            <div className="LoggedOn">
-                <ul style={{flex: 1, "flex-flow": "row wrap", "list-style": "none", "flex-direction": "row", display: "flex"}}>
-                    <li>Logged</li>
-                    <button onClick={this.props.disconnectUser.bind(this)}> Disconnect </button>
-                 </ul>   
-            </div>
-        )
+            <Navbar.Text inline>
+                <Button bsSize="small" onClick={this.logOut.bind(this)}> Log-out </Button>
+            </Navbar.Text>
+        );
     }
 }

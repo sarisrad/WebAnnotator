@@ -12,6 +12,7 @@ export default class App extends Component {
         super();
         this.state = {
             current_user_email: "",
+            server_address: "http://127.0.0.1:8000/"
         }
     }
 
@@ -36,11 +37,15 @@ export default class App extends Component {
         return this.state.current_user_email;
     }
 
+    getServerAddress(){
+        return this.state.server_address;
+    }
+
     render() {
         return (
             <div className="App">
                 <div className="App_HeaderComponent">
-                    <Header connectUser={this.connectUser.bind(this)} disconnectUser={this.disconnectUser.bind(this)} isConnected={this.isConnected.bind(this)} />
+                    <Header getServerAddress={this.getServerAddress.bind(this)} connectUser={this.connectUser.bind(this)} disconnectUser={this.disconnectUser.bind(this)} isConnected={this.isConnected.bind(this)} />
                 </div>
                 <div className="App_BodyComponent">
                     <div className="App_BodyChildrenComponent">

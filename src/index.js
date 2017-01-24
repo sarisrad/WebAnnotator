@@ -8,7 +8,7 @@ import Media from './views/home/Body/BodyMedia';
 import Publications from './views/home/Body/BodyPublications';
 import Contact from './views/home/Body/BodyContact';
 import LiveDemo from './views/home/Body/BodyLiveDemo';
-import WorkSpaceWrapper from './views/home/Body/BodyWorkSpaceWrapper';
+import StartWorking from './views/home/Body/BodyStartWorking';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -26,7 +26,7 @@ ReactDOM.render(
           <Route path="publications" component={Publications}/>
           <Route path="contact" component={Contact}/>
           <Route path="livedemo" component={LiveDemo}/>
-          <Route path="startworking" component={WorkSpaceWrapper}/>
+          <Route path="startworking" component={StartWorking}/>
       </Route>
     </Router>
   </MuiThemeProvider>,

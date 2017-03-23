@@ -19,6 +19,7 @@ export default class BodyStartWorking extends Component {
     addCollection() {
         var coll_name = document.getElementById("collection_name_box");
         var coll_info_dict = {};
+        console.log(coll_name.value); // remove
         coll_info_dict["name"] = coll_name.value;
 
         //Sending the registered user info to the server
@@ -95,7 +96,7 @@ export default class BodyStartWorking extends Component {
             "&user=" + this.props.getConnectedUser()));
     }
 
-    handleChange(e) {
+        handleChange(e) {
         switch (e.target.name) {
             case "collection":
                 this.setState.work_page["collection"] = e.target.value;
@@ -110,6 +111,7 @@ export default class BodyStartWorking extends Component {
                 break;
         }
     }
+
 
     render() {
         return (

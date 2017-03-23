@@ -19,6 +19,9 @@ export default class BodyStartWorking extends Component {
     addCollection() {
         var coll_name = document.getElementById("collection_name_box");
         var coll_info_dict = {};
+
+        console.log(coll_name.value);
+
         coll_info_dict["name"] = coll_name.value;
 
         //Sending the registered user info to the server
@@ -39,6 +42,9 @@ export default class BodyStartWorking extends Component {
         var ms_lang = document.getElementById("auto_comp_lang_add_ms")
         var ms_coll = document.getElementById("auto_comp_coll_add_ms")
         var ms_info_dict = {};
+        console.log(ms_name.value); // remove
+        console.log(ms_lang.value); // remove
+        console.log(ms_coll.value); // remove
         ms_info_dict["name"] = ms_name.value;
         ms_info_dict["language"] = ms_lang.value;
         ms_info_dict["collection"] = ms_coll.value;
@@ -62,6 +68,10 @@ export default class BodyStartWorking extends Component {
         var p_ms = document.getElementById("auto_comp_ms_add_page")
         var p_url = document.getElementById("p_url_box")
         var p_info_dict = {};
+        console.log(p_title.value); // remove
+        console.log(p_coll.value); // remove
+        console.log(p_ms.value); // remove
+        console.log(p_url.value); // remove
         p_info_dict["title"] = p_title.value;
         p_info_dict["collection"] = p_coll.value;
         p_info_dict["manuscript"] = p_ms.value;
@@ -95,22 +105,6 @@ export default class BodyStartWorking extends Component {
             "&user=" + this.props.getConnectedUser()));
     }
 
-    handleChange(e) {
-        switch (e.target.name) {
-            case "collection":
-                this.setState.work_page["collection"] = e.target.value;
-                break;
-            case "manuscript":
-                this.setState.work_page["manuscript"] = e.target.value;
-                break;
-            case "page":
-                this.setState.work_page["page"] = e.target.value;
-                break;
-            default:
-                break;
-        }
-    }
-
     render() {
         return (
             <Grid>
@@ -127,7 +121,6 @@ export default class BodyStartWorking extends Component {
                                         type="text"
                                         placeholder="Collection"
                                         name="collection"
-                                        onChange={this.handleChange.bind(this)}
                                         />
                                 </Col>
                                 <Col>
@@ -142,7 +135,6 @@ export default class BodyStartWorking extends Component {
                                         type="text"
                                         placeholder="Collection"
                                         name="collection"
-                                        onChange={this.handleChange.bind(this)}
                                         />
                                 </Col>
                             </Row>
@@ -154,7 +146,6 @@ export default class BodyStartWorking extends Component {
                                         value={this.state.work_page["manuscript"]}
                                         placeholder="Manuscript"
                                         name="manuscript"
-                                        onChange={this.handleChange.bind(this)}
                                         />
                                 </Col>
                             </Row>
@@ -166,7 +157,6 @@ export default class BodyStartWorking extends Component {
                                         value={this.state.work_page["collection"]}
                                         placeholder="Language"
                                         name="language"
-                                        onChange={this.handleChange.bind(this)}
                                         />
                                 </Col>
                                 <Col>
@@ -182,7 +172,6 @@ export default class BodyStartWorking extends Component {
                                         value={this.state.work_page["collection"]}
                                         placeholder="Collection"
                                         name="collection"
-                                        onChange={this.handleChange.bind(this)}
                                         />
                                 </Col>
                             </Row>
@@ -194,7 +183,6 @@ export default class BodyStartWorking extends Component {
                                         value={this.state.work_page["manuscript"]}
                                         placeholder="Manuscript"
                                         name="manuscript"
-                                        onChange={this.handleChange.bind(this)}
                                         />
                                 </Col>
                             </Row>
@@ -206,7 +194,6 @@ export default class BodyStartWorking extends Component {
                                         value={this.state.work_page["page"]}
                                         placeholder="Page"
                                         name="page"
-                                        onChange={this.handleChange.bind(this)}
                                         />
                                 </Col>
                             </Row>
@@ -218,7 +205,6 @@ export default class BodyStartWorking extends Component {
                                         value={this.state.work_page["image_src"]}
                                         placeholder="Image Source"
                                         name="image_src"
-                                        onChange={this.handleChange.bind(this)}
                                         />
                                 </Col>
                                 <Col>

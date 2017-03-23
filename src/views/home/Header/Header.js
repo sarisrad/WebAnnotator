@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../../../App.css';
 import MyNavBar from './NavBar.js';
 import Login from './Login.js';
 import LoggedOn from './LoggedOn.js';

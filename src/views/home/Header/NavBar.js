@@ -1,47 +1,58 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import {Nav, NavItem} from 'react-bootstrap';
-import {browserHistory} from 'react-router';
+import { Nav, NavItem } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 
 export default class NavBar extends Component {
 
+    componentWillMount() {
+        this.setState({
+            navBarState: {
+                loggedNavBar: (
+                    <Nav bsStyle="pills" activeKey={this.state.activeKey} onSelect={this.handleSelect.bind(this)} navbar={true}>
+                        <NavItem eventKey={1}>Home</NavItem>
+                        <NavItem eventKey={2}>Start Working</NavItem>
+                        <NavItem eventKey={3}>Manage Manuscripts</NavItem>
+                    </Nav>
+                ),
+                notLoggedNavBar: (
+                    <Nav bsStyle="pills" activeKey={this.state.activeKey} onSelect={this.handleSelect.bind(this)} navbar={true}>
+                        <NavItem eventKey={1}>Home</NavItem>
+                    </Nav>
+                )
+            }
+        });
+    }
+
     constructor() {
         super();
-        this.state= {
-            activeKey:2
+        this.state = {
+            activeKey: 2,
+            navBarState: {}
+
         }
     }
 
+
+
     handleSelect(selectedKey) {
-        switch(selectedKey){
+        switch (selectedKey) {
             case 1:
                 browserHistory.push('/');
                 break;
             case 2:
-                browserHistory.push('/about');
+                browserHistory.push('/startworking');
                 break;
             case 3:
-                browserHistory.push('/media');
+                browserHistory.push('/managemanuscripts');
                 break;
-            case 4:
-                browserHistory.push('/publications');
-                break;                                                
-            case 5:
-                browserHistory.push('/contact');
-                break;                
         }
-        this.setState({activeKey:selectedKey});
+        this.setState({ activeKey: selectedKey });
     }
 
     render() {
         return (
-            <Nav bsStyle="pills" activeKey={this.state.activeKey} onSelect={this.handleSelect.bind(this)} navbar={true}>
-                <NavItem eventKey={1}>Home</NavItem>
-                <NavItem eventKey={2}>About</NavItem>
-                <NavItem eventKey={3}>Media</NavItem>
-                <NavItem eventKey={4}>Publications</NavItem>
-                <NavItem eventKey={5}>Contact</NavItem>
-            </Nav>
+            this.props.isConnected() ? this.state.navBarState.loggedNavBar : this.state.navBarState.notLoggedNavBar
         );
     }
 }

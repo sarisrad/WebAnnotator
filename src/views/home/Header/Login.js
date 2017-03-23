@@ -6,7 +6,7 @@ import {browserHistory} from 'react-router';
 export default class Login extends Component {
 
     componentWillMount(){
-        this.setState({server_address: this.props.getServerAddress() + "login_user/"});
+        this.setState({server_address: this.props.getServerAddress()});
     }
 
     constructor() {
@@ -38,7 +38,7 @@ export default class Login extends Component {
         //Sending the registered user info to the server
         var oReq = new XMLHttpRequest();
         oReq.addEventListener("load", (event) => { this.reqLoginUserListener(event, this) });
-        oReq.open("POST", this.state.server_address);
+        oReq.open("POST", this.state.server_address + "login_user/");
         oReq.send(JSON.stringify(user_login_info_dict));
 
         return false;

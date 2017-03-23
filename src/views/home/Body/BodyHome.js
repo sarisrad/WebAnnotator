@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SignUp from './SignUp.js'
-import { Grid, Row, Col } from 'react-bootstrap'
+import {Row, Col } from 'react-bootstrap'
 
 
 

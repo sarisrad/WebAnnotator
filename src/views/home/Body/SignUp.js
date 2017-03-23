@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, ControlLabel, FormControl, HelpBlock, Form, Button, Navbar, Grid, Row, Col, Text } from 'react-bootstrap'
+import { FormGroup, FormControl, Form, Button, Col } from 'react-bootstrap'
 
 export default class SignUp extends Component {
 
@@ -61,6 +61,8 @@ export default class SignUp extends Component {
                 break;
             case "affiliation":
                 this.setState({ affiliation: e.target.value });
+                break;
+            default:
                 break;
         }
     }

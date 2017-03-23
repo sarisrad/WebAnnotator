@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { FormGroup, ControlLabel, FormControl, HelpBlock, Form, Button, Navbar } from 'react-bootstrap'
+import {Button, Navbar } from 'react-bootstrap'
 import {browserHistory} from 'react-router';
 
 
@@ -13,7 +12,7 @@ export default class LoggedOn extends Component {
 
     render() {
         return (
-            <Navbar.Text inline>
+            <Navbar.Text>
                 <Button bsSize="small" onClick={this.logOut.bind(this)}> Log-out </Button>
             </Navbar.Text>
         );

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { FormGroup, ControlLabel, FormControl, HelpBlock, Form, Button, Navbar } from 'react-bootstrap'
-import {browserHistory} from 'react-router';
+import { FormGroup, FormControl, Button, Navbar } from 'react-bootstrap'
+import { browserHistory } from 'react-router';
 
 export default class Login extends Component {
 
-    componentWillMount(){
-        this.setState({server_address: this.props.getServerAddress()});
+    componentWillMount() {
+        this.setState({ server_address: this.props.getServerAddress() });
+        this.props.connectUser("a"); //remove!!!!!
     }
 
     constructor() {
@@ -20,7 +20,7 @@ export default class Login extends Component {
 
     reqLoginUserListener(event, cur_obj) {
         var responsed_user_email = event.target.responseText;
-        if (responsed_user_email == "None") {
+        if (responsed_user_email === "None") {
             window.alert("Incorrect email or password, please try again.")
         }
         else {
@@ -52,12 +52,14 @@ export default class Login extends Component {
             case "password":
                 this.setState({ password: e.target.value });
                 break;
+            default:
+                break;
         }
     }
 
     render() {
         return (
-            <Navbar.Form inline>
+            <Navbar.Form>
                 <FormGroup controlId="formBasicText">
                     <FormControl
                         type="text"
@@ -73,8 +75,6 @@ export default class Login extends Component {
                         name="password"
                         onChange={this.handleChange.bind(this)}
                         />
-                    <FormControl.Feedback />
-                    {' '}
                     <Button onClick={this.loginUser.bind(this)}>Login</Button>
                 </FormGroup>
             </Navbar.Form>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import { Nav, NavItem } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 
@@ -45,6 +44,8 @@ export default class NavBar extends Component {
                 break;
             case 3:
                 browserHistory.push('/managemanuscripts');
+                break;
+            default:
                 break;
         }
         this.setState({ activeKey: selectedKey });

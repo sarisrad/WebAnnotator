@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { FormGroup, ControlLabel, FormControl, HelpBlock, Form, Button, Navbar, Grid, Row, Col, Text } from 'react-bootstrap'
+import { FormGroup, FormControl, Button, Grid, Row, Col } from 'react-bootstrap'
 
 export default class BodyStartWorking extends Component {
 
@@ -80,7 +79,7 @@ export default class BodyStartWorking extends Component {
     reqSearchPageListener(req, calling_obj) {
         console.log(req.target.responseText);
         var response_json = JSON.parse(req.target.responseText);
-        if (response_json["status"] != "FAIL") {
+        if (response_json["status"] !== "FAIL") {
             calling_obj.props.loadWorkSpace(response_json["value"]);
         }
         else {
@@ -99,13 +98,15 @@ export default class BodyStartWorking extends Component {
     handleChange(e) {
         switch (e.target.name) {
             case "collection":
-                this.state.work_page["collection"] = e.target.value;
+                this.setState.work_page["collection"] = e.target.value;
                 break;
             case "manuscript":
-                this.state.work_page["manuscript"] = e.target.value;
+                this.setState.work_page["manuscript"] = e.target.value;
                 break;
             case "page":
-                this.state.work_page["page"] = e.target.value;
+                this.setState.work_page["page"] = e.target.value;
+                break;
+            default:
                 break;
         }
     }
@@ -113,16 +114,32 @@ export default class BodyStartWorking extends Component {
     render() {
         return (
             <Grid>
-                <h1>Start Working</h1>
+                <h1>Manage Manuscripts</h1>
                 <br /><br />
                 <Row>
+                    <h3>Add Collection</h3>
                     <Col md={5}>
                         <FormGroup>
                             <Row>
                                 <Col md={8}>
                                     <FormControl
+                                        id="collection_name_box"
                                         type="text"
-                                        value={this.state.work_page["collection"]}
+                                        placeholder="Collection"
+                                        name="collection"
+                                        onChange={this.handleChange.bind(this)}
+                                        />
+                                </Col>
+                                <Col>
+                                    <Button onClick={this.addCollection.bind(this)}>Add</Button>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <h3>Add Manuscript</h3>
+                                <Col md={8}>
+                                    <FormControl
+                                        id="auto_comp_coll_add_ms"
+                                        type="text"
                                         placeholder="Collection"
                                         name="collection"
                                         onChange={this.handleChange.bind(this)}
@@ -132,6 +149,7 @@ export default class BodyStartWorking extends Component {
                             <Row>
                                 <Col md={8}>
                                     <FormControl
+                                        id="ms_name_box"
                                         type="text"
                                         value={this.state.work_page["manuscript"]}
                                         placeholder="Manuscript"
@@ -143,6 +161,47 @@ export default class BodyStartWorking extends Component {
                             <Row>
                                 <Col md={8}>
                                     <FormControl
+                                        id="auto_comp_lang_add_ms"
+                                        type="text"
+                                        value={this.state.work_page["collection"]}
+                                        placeholder="Language"
+                                        name="language"
+                                        onChange={this.handleChange.bind(this)}
+                                        />
+                                </Col>
+                                <Col>
+                                    <Button onClick={this.addManuscript.bind(this)}>Add</Button>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <h3>Add Page</h3>
+                                <Col md={8}>
+                                    <FormControl
+                                        id="auto_comp_coll_add_page"
+                                        type="text"
+                                        value={this.state.work_page["collection"]}
+                                        placeholder="Collection"
+                                        name="collection"
+                                        onChange={this.handleChange.bind(this)}
+                                        />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={8}>
+                                    <FormControl
+                                        id="auto_comp_ms_add_page"
+                                        type="text"
+                                        value={this.state.work_page["manuscript"]}
+                                        placeholder="Manuscript"
+                                        name="manuscript"
+                                        onChange={this.handleChange.bind(this)}
+                                        />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={8}>
+                                    <FormControl
+                                        id="p_title_box"
                                         type="text"
                                         value={this.state.work_page["page"]}
                                         placeholder="Page"
@@ -150,8 +209,20 @@ export default class BodyStartWorking extends Component {
                                         onChange={this.handleChange.bind(this)}
                                         />
                                 </Col>
+                            </Row>
+                            <Row>
+                                <Col md={8}>
+                                    <FormControl
+                                        id="p_url_box"
+                                        type="text"
+                                        value={this.state.work_page["image_src"]}
+                                        placeholder="Image Source"
+                                        name="image_src"
+                                        onChange={this.handleChange.bind(this)}
+                                        />
+                                </Col>
                                 <Col>
-                                    <Button bsSize="medium" onClick={this.searchPage.bind(this)}>OK</Button>
+                                    <Button onClick={this.addPage.bind(this)}>Add</Button>
                                 </Col>
                             </Row>
                             <FormControl.Feedback />

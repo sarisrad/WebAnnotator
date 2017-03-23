@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MyNavBar from './NavBar.js';
 import Login from './Login.js';
 import LoggedOn from './LoggedOn.js';
-import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 import { Navbar, Nav } from 'react-bootstrap';
 
 export default class Header extends Component {

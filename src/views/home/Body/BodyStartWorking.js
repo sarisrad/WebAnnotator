@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { FormGroup, ControlLabel, FormControl, HelpBlock, Form, Button, Navbar, Grid, Row, Col, Text } from 'react-bootstrap'
+import { FormGroup, FormControl, Button, Grid, Row, Col } from 'react-bootstrap'
 
 export default class BodyStartWorking extends Component {
 
@@ -80,7 +79,7 @@ export default class BodyStartWorking extends Component {
     reqSearchPageListener(req, calling_obj) {
         console.log(req.target.responseText);
         var response_json = JSON.parse(req.target.responseText);
-        if (response_json["status"] != "FAIL") {
+        if (response_json["status"] !== "FAIL") {
             calling_obj.props.loadWorkSpace(response_json["value"]);
         }
         else {
@@ -99,13 +98,15 @@ export default class BodyStartWorking extends Component {
     handleChange(e) {
         switch (e.target.name) {
             case "collection":
-                this.state.work_page["collection"] = e.target.value;
+                this.setState.work_page["collection"] = e.target.value;
                 break;
             case "manuscript":
-                this.state.work_page["manuscript"] = e.target.value;
+                this.setState.work_page["manuscript"] = e.target.value;
                 break;
             case "page":
-                this.state.work_page["page"] = e.target.value;
+                this.setState.work_page["page"] = e.target.value;
+                break;
+            default:
                 break;
         }
     }

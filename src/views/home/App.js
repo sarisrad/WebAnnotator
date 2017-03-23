@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Header from './Header/Header.js';
 import Footer from './Footer/Footer.js'
 import { Row, Grid, Col } from 'react-bootstrap';
@@ -29,7 +28,7 @@ export default class App extends Component {
     }
 
     isConnected() {
-        return (!(this.state.current_user_email == ""));
+        return (!(this.state.current_user_email === ""));
     }
 
     getConnectedUser() {

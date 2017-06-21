@@ -9,7 +9,6 @@ var usersRoute = require('./routes/users');
 var collectionsRoute = require('./routes/collections');
 var manuscriptsRoute = require('./routes/manuscripts');
 
-
 var port = 3000;
 
 // View Engine
@@ -33,7 +32,6 @@ app.use('/', indexRoute);
 app.use('/api/users', usersRoute);
 app.use('/api/collections', collectionsRoute);
 app.use('/api/manuscripts', manuscriptsRoute);
-
 
 app.listen(port);
 console.log('Running on port ' + port + '...');

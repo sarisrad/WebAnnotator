@@ -6,6 +6,10 @@ var userSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	family_name:{
+		type: String,
+		required: true
+	},
 	password:{
 		type: String,
 		required: true
@@ -51,6 +55,9 @@ module.exports.updateUser = function(id, user, options, callback) {
 	var update = {}
 	if (user.name) {
 		update.name = user.name;
+	}
+	if (user.family_name) {
+		update.family_name = user.family_name;
 	}
 	if (user.password) {
 		update.password = user.password;

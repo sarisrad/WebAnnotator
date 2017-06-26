@@ -79,3 +79,9 @@ module.exports.deleteUser = function(id, callback) {
 	var query = {_id: id};
 	User.remove(query, callback);
 }
+
+// Checks if a user has the right email and pass to log in
+module.exports.loginUser = function(query, callback) {
+	// var query = { email: email, password: password};
+	User.find(query, callback);
+}

@@ -30,6 +30,12 @@ var UsersService = (function () {
         return this.http.delete('/api/users/' + id)
             .map(function (res) { return res.json(); });
     };
+    UsersService.prototype.loginUser = function (userDetails) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/login', JSON.stringify(userDetails), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     return UsersService;
 }());
 UsersService = __decorate([

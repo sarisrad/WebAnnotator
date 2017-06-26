@@ -23,4 +23,11 @@ export class UsersService {
 		return this.http.delete('/api/users/'+id)
 			.map(res => res.json());
 	}
+
+	loginUser(userDetails){
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		return this.http.post('/api/login', JSON.stringify(userDetails), {headers: headers})
+			.map(res => res.json());
+	}
 }

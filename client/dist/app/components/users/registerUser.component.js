@@ -20,35 +20,35 @@ var RegisterUser = (function () {
             .subscribe(function (users) {
             _this.users = users;
         });
+        this.initUser();
     }
+    RegisterUser.prototype.initUser = function () {
+        this.newUser = new User_1.User;
+        this.newUser.role = "none";
+        this.passConfirmation = "";
+    };
     RegisterUser.prototype.addUser = function (event) {
         var _this = this;
         event.preventDefault();
-        this.usersService.addUser(this.newUser)
-            .subscribe(function (user) {
-            _this.newUser = new User_1.User;
-        });
-    };
-    RegisterUser.prototype.deleteUser = function (id) {
-        var users = this.users;
-        this.usersService.deleteUser(id).subscribe(function (data) {
-            if (data.n == 1) {
-                for (var i = 0; i < users.length; i++) {
-                    if (users[i]._id == id) {
-                        users.splice(i, 1);
-                    }
-                }
-            }
-        });
+        if (this.passConfirmation == this.newUser.password) {
+            this.usersService.addUser(this.newUser)
+                .subscribe(function (user) {
+                _this.initUser();
+            });
+        }
+        else {
+            alert("Wrong password confirmation");
+        }
     };
     return RegisterUser;
 }());
 RegisterUser = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'users',
+        selector: 'register-user',
         templateUrl: '../../../../templates/registerUser.component.html',
-        providers: []
+        providers: [],
+        styleUrls: ['../../../../styles/register_user.css']
     }),
     __metadata("design:paramtypes", [users_service_1.UsersService])
 ], RegisterUser);

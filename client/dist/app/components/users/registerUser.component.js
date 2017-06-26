@@ -11,8 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var users_service_1 = require("../../services/users.service");
-var UsersComponent = (function () {
-    function UsersComponent(usersService) {
+var User_1 = require("../../models/User");
+var RegisterUser = (function () {
+    function RegisterUser(usersService) {
         var _this = this;
         this.usersService = usersService;
         this.usersService.getUsers()
@@ -20,24 +21,15 @@ var UsersComponent = (function () {
             _this.users = users;
         });
     }
-    UsersComponent.prototype.addUser = function (event) {
+    RegisterUser.prototype.addUser = function (event) {
         var _this = this;
         event.preventDefault();
-        var newUser = {
-            name: this.username,
-            password: "this.password",
-            email: "this.email"
-        };
-        this.usersService.addUser(newUser)
+        this.usersService.addUser(this.newUser)
             .subscribe(function (user) {
-            _this.users.push(user);
-            _this.username = "";
-            _this.password = "";
-            _this.email = "";
-            console.log(_this.users);
+            _this.newUser = new User_1.User;
         });
     };
-    UsersComponent.prototype.deleteUser = function (id) {
+    RegisterUser.prototype.deleteUser = function (id) {
         var users = this.users;
         this.usersService.deleteUser(id).subscribe(function (data) {
             if (data.n == 1) {
@@ -49,16 +41,16 @@ var UsersComponent = (function () {
             }
         });
     };
-    return UsersComponent;
+    return RegisterUser;
 }());
-UsersComponent = __decorate([
+RegisterUser = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'users',
-        templateUrl: 'users.component.html',
+        templateUrl: '../../../../templates/registerUser.component.html',
         providers: []
     }),
     __metadata("design:paramtypes", [users_service_1.UsersService])
-], UsersComponent);
-exports.UsersComponent = UsersComponent;
-//# sourceMappingURL=users.component.js.map
+], RegisterUser);
+exports.RegisterUser = RegisterUser;
+//# sourceMappingURL=registerUser.component.js.map

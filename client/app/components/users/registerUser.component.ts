@@ -1,20 +1,17 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../../services/users.service';
-import { User } from '../../../models/User';
-
+import { User } from '../../models/User';
 
 @Component({
   moduleId: module.id,
   selector: 'users',
-  templateUrl: 'users.component.html',
+  templateUrl: '../../../../templates/registerUser.component.html',
   providers:[]
 })
 
-export class UsersComponent {
+export class RegisterUser {
 	users: User[];
-	username: string;
-	email: string;
-	password: string;
+	newUser: User;
 
 	constructor(private usersService:UsersService){
 		this.usersService.getUsers()
@@ -25,24 +22,14 @@ export class UsersComponent {
 
 	addUser(event){
 		event.preventDefault();
-		var newUser = {
-			name: this.username,
-			password: "this.password",
-			email: "this.email"
-		}
-		this.usersService.addUser(newUser)
+		this.usersService.addUser(this.newUser)
 			.subscribe(user => {
-				this.users.push(user);
-				this.username = "";
-				this.password = "";
-				this.email = "";
-				console.log(this.users);
+				this.newUser = new User;
 			});
 	}
 
 	deleteUser(id) {
 		var users = this.users;
-
 		this.usersService.deleteUser(id).subscribe(data => {
 			if(data.n == 1){
 				for(var i = 0; i < users.length; i++){

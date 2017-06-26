@@ -15,7 +15,6 @@ require("rxjs/add/operator/map");
 var UsersService = (function () {
     function UsersService(http) {
         this.http = http;
-        console.log('User Service Initialized...');
     }
     UsersService.prototype.getUsers = function () {
         return this.http.get('/api/users')

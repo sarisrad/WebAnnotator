@@ -14,6 +14,14 @@ var userSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	affiliation:{
+		type: String,
+		required: true
+	},
+	role:{
+		type: String,
+		required: true
+	},
 	create_date:{
 		type:Date,
 		default: Date.now
@@ -49,6 +57,12 @@ module.exports.updateUser = function(id, user, options, callback) {
 	}
 	if (user.email) {
 		update.email = user.email;
+	}
+	if (user.affiliation) {
+		update.affiliation = user.affiliation;
+	}
+	if (user.role) {
+		update.role = user.role;
 	}
 	User.findOneAndUpdate(query, update, options, callback);
 }

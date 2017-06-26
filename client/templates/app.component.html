@@ -13,7 +13,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a routerLink="/home">Home <span class="sr-only">(current)</span></a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Workspace</a></li>
         <li><a href="#">Manage Collections</a></li>
@@ -31,17 +31,5 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div class="body">
-  <div class="container">
-      <div class="col-md-8">
-          <div class="site-description">
-                    <h1>WebGT</h1>
-                    <h3>Web Based Ground Truthing System</h3>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="register-user-form">
-            <register-user> </register-user>
-          </div>
-      </div>
-  </div>
+   <router-outlet></router-outlet>
 </div>

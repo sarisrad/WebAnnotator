@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 
 // User Schema
 var userSchema = mongoose.Schema({
@@ -46,6 +47,7 @@ module.exports.getUserById = function(id, callback) {
 
 // Add a user
 module.exports.addUser = function(user, callback) {
+	user.password = encryptPassword(user.password);
 	User.create(user, callback);
 }
 
@@ -60,7 +62,7 @@ module.exports.updateUser = function(id, user, options, callback) {
 		update.family_name = user.family_name;
 	}
 	if (user.password) {
-		update.password = user.password;
+		update.password = encryptPassword(user.password);
 	}
 	if (user.email) {
 		update.email = user.email;
@@ -82,6 +84,27 @@ module.exports.deleteUser = function(id, callback) {
 
 // Checks if a user has the right email and pass to log in
 module.exports.loginUser = function(query, callback) {
-	// var query = { email: email, password: password};
-	User.find(query, callback);
+	// First find the user with the email and then check if the password is correct
+	emailQuery = { email: query.email }; 
+	User.find( emailQuery, function(err, obj){
+		if(err){
+			callback(new Error("The given email doesn't exist"), null);
+		}
+		else{
+			if (obj.length){
+				matchingUser = obj[0];
+				// Check that the password matches
+				if (bcrypt.compareSync(query.password, matchingUser.password))
+					callback(null, matchingUser);
+				else
+					callback(new Error("Incorrect password"), {});
+			}
+		}
+	});
+}
+
+var encryptPassword = function(password){
+	// Encrypt the password and save the hash
+	var salt = bcrypt.genSaltSync(10);
+	return bcrypt.hashSync(password, salt);
 }

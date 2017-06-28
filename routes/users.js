@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 User = require('../models/user');
+cookies = require('cookies');
 
 router.get('/', function (req, res) {
 	User.getUsers(function(err, users){

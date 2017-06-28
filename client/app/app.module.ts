@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { RegisterUser } from './components/users/registerUser.component';
+import { RegisterUserComponent } from './components/users/registerUser.component';
+import { LoginUserComponent } from './components/users/loginUser.component';
 import { HomePageComponent } from './components/pages/homePage.component';
 import { AboutPageComponent } from './components/pages/aboutPage.component';
 import { WorkspacePageComponent } from './components/pages/workspacePage.component';
@@ -20,7 +21,8 @@ import { ManageCollectionsPageComponent } from './components/pages/manageCollect
             ],
   declarations: [ 
                   AppComponent,
-                  RegisterUser,
+                  RegisterUserComponent,
+                  LoginUserComponent,
                   HomePageComponent,
                   AboutPageComponent,
                   WorkspacePageComponent,

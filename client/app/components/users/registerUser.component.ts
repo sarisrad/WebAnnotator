@@ -10,21 +10,16 @@ import { User } from '../../models/User';
   styleUrls: ['../../../../styles/register_user.css']
 })
 
-export class RegisterUser {
-	users: User[];
+export class RegisterUserComponent {
 	newUser: User;
 	passConfirmation: string;
 
 	constructor(private usersService:UsersService){
-		this.usersService.getUsers()
-			.subscribe(users => {
-				this.users = users;
-			});
 		this.initUser();
 	}
 
 	initUser() {
-		this.newUser = new User;
+		this.newUser = new User(null);
 		this.newUser.role = "none";
 		this.passConfirmation = "";
 	}

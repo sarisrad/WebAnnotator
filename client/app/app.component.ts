@@ -10,10 +10,8 @@ import { User } from './models/User';
 })
 
 export class AppComponent { 
-	tabs: object[];
-	activeTab: string;
-	loginUserData: object;
-	currentUser: User;
+	private tabs: object[];
+	private activeTab: string;
 
 	constructor(private usersService:UsersService){
 		this.init();
@@ -27,22 +25,14 @@ export class AppComponent {
 			{route: "workspace", text:"Workspace"},
 			{route: "manage-collections", text:"Manage Collections"},
 		];
-		this.currentUser = null;
-		this.loginUserData = {};
 	}
 
 	getActiveTab(tabName){
 		return this.activeTab == tabName;
 	}
 
+
 	setActiveTab(tabName){
 		this.activeTab = tabName;
-	}
-
-	loginUser(){
-		this.usersService.loginUser(this.loginUserData)
-				.subscribe(user => {
-					console.log(user);
-				});
 	}
 }

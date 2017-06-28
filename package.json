@@ -11,7 +11,11 @@
     "ejs": "*",
     "express": "*",
     "mongojs": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "cookie": "*",
+    "cookie-parser": "*",
+    "cookie-session": "*",
+    "bcryptjs": "*"
   },
   "author": "Sahar",
   "license": "ISC"

@@ -24,20 +24,12 @@ var AppComponent = (function () {
             { route: "workspace", text: "Workspace" },
             { route: "manage-collections", text: "Manage Collections" },
         ];
-        this.currentUser = null;
-        this.loginUserData = {};
     };
     AppComponent.prototype.getActiveTab = function (tabName) {
         return this.activeTab == tabName;
     };
     AppComponent.prototype.setActiveTab = function (tabName) {
         this.activeTab = tabName;
-    };
-    AppComponent.prototype.loginUser = function () {
-        this.usersService.loginUser(this.loginUserData)
-            .subscribe(function (user) {
-            console.log(user);
-        });
     };
     return AppComponent;
 }());

@@ -12,8 +12,9 @@ import { User } from '../../models/User';
 
 export class LoginUserComponent {
 	private loginUserData: object;
-
-	@Input() isLogged: boolean;
+	private currentUser: User;
+	private loaded: boolean;
+	private isLogged: boolean;
 
 	constructor(private usersService: UsersService){
 		this.init();
@@ -26,11 +27,33 @@ export class LoginUserComponent {
 	}
 
 	checkIfLogged(){
-		// use cookies to check if the user is logged
+		console.log("hey");
+		this.usersService.getLoggedUser()
+			.subscribe(res => {
+				console.log(res);
+				if (res){
+					this.isLogged = true;
+					this.currentUser = res;
+				}
+				else{
+					this.isLogged = false;
+					this.currentUser = new User(null);
+				}
+				this.loaded = true;
+			});
 	}
 
 	login(){
 		this.isLogged = true;
+	}
+
+	logout(){
+		console.log("logiingout");
+		this.usersService.logOutUser()
+			.subscribe(res => {
+				this.init();
+				alert("loggedOut");
+			});
 	}
 
 	loginUser(){

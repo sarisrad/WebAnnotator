@@ -36,6 +36,14 @@ var UsersService = (function () {
         return this.http.post('/api/login', JSON.stringify(userDetails), { headers: headers })
             .map(function (res) { return res.json(); });
     };
+    UsersService.prototype.getLoggedUser = function () {
+        return this.http.get('/api/login')
+            .map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.logOutUser = function () {
+        return this.http.delete('/api/login')
+            .map(function (res) { return res.json(); });
+    };
     return UsersService;
 }());
 UsersService = __decorate([

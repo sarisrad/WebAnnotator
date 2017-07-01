@@ -82,20 +82,49 @@ module.exports.deleteUser = function(id, callback) {
 	User.remove(query, callback);
 }
 
+// Returns the session's user if it exists
+module.exports.getLoggedUser = function(req, callback) {
+	if (req.session.loggedUserEmail){
+		User.find({ email: req.session.loggedUserEmail }, function(err, obj){
+			if(err){
+				callback(new Error("Error with DB"), null);
+			}
+			else{
+				currentUser = {};
+				if (obj.length)
+					currentUser = obj[0];
+				callback(null, currentUser);
+			}
+		});
+	}
+	else{
+		callback(null, null);
+	}
+}
+
+module.exports.logOutUser = function(req, callback) {
+	console.log("HEY!");
+	req.session.loggedUserEmail = null;
+	callback(null, null);
+}
+
 // Checks if a user has the right email and pass to log in
-module.exports.loginUser = function(query, callback) {
+module.exports.loginUser = function(req, callback) {
 	// First find the user with the email and then check if the password is correct
+	query = req.body;
 	emailQuery = { email: query.email }; 
 	User.find( emailQuery, function(err, obj){
 		if(err){
 			callback(new Error("The given email doesn't exist"), null);
 		}
-		else{
+		else {
 			if (obj.length){
 				matchingUser = obj[0];
 				// Check that the password matches
-				if (bcrypt.compareSync(query.password, matchingUser.password))
+				if (bcrypt.compareSync(query.password, matchingUser.password)){
+					req.session.loggedUserEmail = matchingUser.email;
 					callback(null, matchingUser);
+				}
 				else
 					callback(new Error("Incorrect password"), {});
 			}

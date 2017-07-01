@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 
 // var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
-var expressValidator = require('express-validator');
+// var expressValidator = require('express-validator');
 var randomstring = require('randomstring');
 
 var indexRoute = require('./routes/index');
@@ -36,7 +36,7 @@ mongoose.connect('mongodb://root:root@ds119682.mlab.com:19682/webannotator');
 var db = mongoose.connection;
 
 // app.use(cookieParser());
-app.use(expressValidator());
+// app.use(expressValidator());
 // TODO: change the session storing from memory
 app.use(expressSession({secret: randomstring.generate(32), saveUninitialized: false, resave: false, cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 }}));
 app.use(permissions.checkAuth);

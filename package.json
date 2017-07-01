@@ -16,7 +16,8 @@
     "cookie-parser": "*",
     "cookie-session": "*",
     "bcryptjs": "*",
-    "express-session": "*"
+    "express-session": "*",
+    "randomstring": "*"
   },
   "author": "Sahar",
   "license": "ISC"

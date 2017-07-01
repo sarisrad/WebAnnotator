@@ -103,7 +103,6 @@ module.exports.getLoggedUser = function(req, callback) {
 }
 
 module.exports.logOutUser = function(req, callback) {
-	console.log("HEY!");
 	req.session.loggedUserEmail = null;
 	callback(null, null);
 }

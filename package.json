@@ -7,16 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bcryptjs": "*",
     "body-parser": "*",
-    "ejs": "*",
-    "express": "*",
-    "mongojs": "*",
-    "mongoose": "*",
     "cookie": "*",
     "cookie-parser": "*",
     "cookie-session": "*",
-    "bcryptjs": "*",
+    "ejs": "*",
+    "express": "*",
     "express-session": "*",
+    "express-sessions": "^1.0.6",
+    "mongojs": "*",
+    "mongoose": "*",
+    "node-session": "*",
     "randomstring": "*"
   },
   "author": "Sahar",

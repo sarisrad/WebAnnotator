@@ -13,7 +13,11 @@ var forms_1 = require("@angular/forms");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var registerUser_component_1 = require("./components/users/registerUser.component");
+var loginUser_component_1 = require("./components/users/loginUser.component");
 var homePage_component_1 = require("./components/pages/homePage.component");
+var aboutPage_component_1 = require("./components/pages/aboutPage.component");
+var workspacePage_component_1 = require("./components/pages/workspacePage.component");
+var manageCollectionsPage_component_1 = require("./components/pages/manageCollectionsPage.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,7 +31,15 @@ AppModule = __decorate([
             forms_1.FormsModule,
             app_routing_module_1.AppRoutingModule
         ],
-        declarations: [app_component_1.AppComponent, registerUser_component_1.RegisterUser, homePage_component_1.HomePageComponent],
+        declarations: [
+            app_component_1.AppComponent,
+            registerUser_component_1.RegisterUserComponent,
+            loginUser_component_1.LoginUserComponent,
+            homePage_component_1.HomePageComponent,
+            aboutPage_component_1.AboutPageComponent,
+            workspacePage_component_1.WorkspacePageComponent,
+            manageCollectionsPage_component_1.ManageCollectionsPageComponent
+        ],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

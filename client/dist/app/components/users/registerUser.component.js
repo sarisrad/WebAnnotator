@@ -12,22 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var users_service_1 = require("../../services/users.service");
 var User_1 = require("../../models/User");
-var RegisterUser = (function () {
-    function RegisterUser(usersService) {
-        var _this = this;
+var RegisterUserComponent = (function () {
+    function RegisterUserComponent(usersService) {
         this.usersService = usersService;
-        this.usersService.getUsers()
-            .subscribe(function (users) {
-            _this.users = users;
-        });
         this.initUser();
     }
-    RegisterUser.prototype.initUser = function () {
-        this.newUser = new User_1.User;
+    RegisterUserComponent.prototype.initUser = function () {
+        this.newUser = new User_1.User(null);
         this.newUser.role = "none";
         this.passConfirmation = "";
     };
-    RegisterUser.prototype.addUser = function (event) {
+    RegisterUserComponent.prototype.addUser = function (event) {
         var _this = this;
         event.preventDefault();
         if (this.passConfirmation == this.newUser.password) {
@@ -40,9 +35,9 @@ var RegisterUser = (function () {
             alert("Wrong password confirmation");
         }
     };
-    return RegisterUser;
+    return RegisterUserComponent;
 }());
-RegisterUser = __decorate([
+RegisterUserComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'register-user',
@@ -51,6 +46,6 @@ RegisterUser = __decorate([
         styleUrls: ['../../../../styles/register_user.css']
     }),
     __metadata("design:paramtypes", [users_service_1.UsersService])
-], RegisterUser);
-exports.RegisterUser = RegisterUser;
+], RegisterUserComponent);
+exports.RegisterUserComponent = RegisterUserComponent;
 //# sourceMappingURL=registerUser.component.js.map

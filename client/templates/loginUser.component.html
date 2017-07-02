@@ -1,0 +1,13 @@
+<div *ngIf="loaded">
+	<form *ngIf="!isLogged" class="navbar-form navbar-right" (submit)="loginUser($event)">
+		<div class="form-group">
+			<input [(ngModel)]="loginUserData.email" name="email" required="required" type="email" class="form-control" placeholder="Email">
+		</div>
+		<div class="form-group">
+			<input [(ngModel)]="loginUserData.password" name="password" required="required" type="password" class="form-control" placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-default">Login</button>
+	</form>
+	<div *ngIf="isLogged" class="navbar-form navbar-right">logged</div>
+	<input (click)="logout()" type="button" value="Log Out" class="btn btn-danger">
+</div>

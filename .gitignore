@@ -9,3 +9,6 @@ jspm_packages/
 
 # Typescript v1 declaration files
 typings/
+
+# Log Files
+*.log

@@ -1,0 +1,14 @@
+.logged-user-container {
+	display: flex;
+	margin-right: 50px;
+}
+.logout-text {
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+}
+.logout-button > input {
+    height: 27px;
+    line-height: 5px;
+    margin-top: 3px;
+}

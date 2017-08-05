@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Http, Headers } from '@angular/http'
-import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class UsersService {
@@ -11,41 +9,65 @@ export class UsersService {
 
 	getUsers(){
 		return this.http.get('/api/users')
-			.map(res => res.json());
+			.map(res => {
+				if (res.status < 200 || res.status >= 300)
+					throw new Error();
+				else
+					return res.json();
+		});
 	}
 
 	addUser(newUser) {
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 		return this.http.post('/api/users', JSON.stringify(newUser), {headers: headers})
-			.map(res => res.json());
+			.map(res => {
+				if (res.status < 200 || res.status >= 300)
+					throw new Error();
+				else
+					return res.json();
+		});
 	}
 
 	deleteUser(id){
 		return this.http.delete('/api/users/'+id)
-			.map(res => res.json());
+			.map(res => {
+				if (res.status < 200 || res.status >= 300)
+					throw new Error();
+				else
+					return res.json();
+		});
 	}
 
 	loginUser(userDetails){
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 		return this.http.post('/api/login', JSON.stringify(userDetails), {headers: headers})
-			.map(res => this.handleErrorsAndContinue(res));
+			.map(res => {
+				if (res.status < 200 || res.status >= 300)
+					throw new Error();
+				else
+					return res.json();
+		});
 	}
 
 	getLoggedUser(){
 		return this.http.get('/api/login')
-			.map(res => res.json())
-	        .catch(e => {
-	            if (e.status === 401) {
-	            	console.log(e);
-	                return Observable.throw('Unauthorized');
-	            }
-	            // do any other checking for statuses here
-	        });	}
+			.map(res => {
+				if (res.status < 200 || res.status >= 300)
+					throw new Error();
+				else
+					return res.json();
+		});
+	}
 
 	logOutUser(){
 		return this.http.delete('/api/login')
-			.map(res => res.json());
+			.map(res => {
+				if (res.status < 200 || res.status >= 300)
+					throw new Error();
+				else
+					return res.json();
+		});
 	}
 }

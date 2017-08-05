@@ -11,48 +11,68 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var rxjs_1 = require("rxjs");
 require("rxjs/add/operator/map");
-require("rxjs/add/operator/catch");
 var UsersService = (function () {
     function UsersService(http) {
         this.http = http;
     }
     UsersService.prototype.getUsers = function () {
         return this.http.get('/api/users')
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     UsersService.prototype.addUser = function (newUser) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('/api/users', JSON.stringify(newUser), { headers: headers })
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     UsersService.prototype.deleteUser = function (id) {
         return this.http.delete('/api/users/' + id)
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     UsersService.prototype.loginUser = function (userDetails) {
-        var _this = this;
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('/api/login', JSON.stringify(userDetails), { headers: headers })
-            .map(function (res) { return _this.handleErrorsAndContinue(res); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     UsersService.prototype.getLoggedUser = function () {
         return this.http.get('/api/login')
-            .map(function (res) { return res.json(); })
-            .catch(function (e) {
-            if (e.status === 401) {
-                console.log(e);
-                return rxjs_1.Observable.throw('Unauthorized');
-            }
-            // do any other checking for statuses here
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
         });
     };
     UsersService.prototype.logOutUser = function () {
         return this.http.delete('/api/login')
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     return UsersService;
 }());

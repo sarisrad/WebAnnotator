@@ -27,8 +27,11 @@ var RegisterUserComponent = (function () {
         event.preventDefault();
         if (this.passConfirmation == this.newUser.password) {
             this.usersService.addUser(this.newUser)
-                .subscribe(function (user) {
+                .subscribe(function (res) {
                 _this.initUser();
+                alert("User created successfully!");
+            }, function (err) {
+                alert(err._body);
             });
         }
         else {

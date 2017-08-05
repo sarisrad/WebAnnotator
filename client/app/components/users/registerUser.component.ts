@@ -28,8 +28,13 @@ export class RegisterUserComponent {
 		event.preventDefault();
 		if(this.passConfirmation == this.newUser.password){
 			this.usersService.addUser(this.newUser)
-				.subscribe(user => {
+				.subscribe(
+				res => {
 					this.initUser();
+					alert("User created successfully!");
+				},
+				err => {
+					alert(err._body);
 				});
 		}
 		else {

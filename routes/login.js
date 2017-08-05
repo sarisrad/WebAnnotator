@@ -2,30 +2,30 @@ var express = require('express');
 var router = express.Router();
 User = require('../models/user');
 
-router.get('/', function (req, res) {
+router.get('/', function (req, res, next) {
 	User.getLoggedUser(req, function(err, user){
-		if(err){
-			throw err;
-		}
-		res.json(user);
+		if(err)
+			next(err);
+		else
+			res.json(user);
 	});
 });
 
-router.delete('/', function (req, res) {
+router.delete('/', function (req, res, next) {
 	User.logOutUser(req, function(err){
-		if(err){
-			throw err;
-		}
-		res.json({});
+		if(err)
+			next(err);
+		else
+			res.json({});
 	});
 });
 
-router.post('/', function (req, res) {
+router.post('/', function (req, res, next) {
 	User.loginUser(req, function(err, user){
-		if(err){
-			throw err;
-		}
-		res.json(user);
+		if(err)
+			next(err);
+		else
+			res.json(user);
 	});
 });
 

@@ -18,31 +18,61 @@ var UsersService = (function () {
     }
     UsersService.prototype.getUsers = function () {
         return this.http.get('/api/users')
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     UsersService.prototype.addUser = function (newUser) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('/api/users', JSON.stringify(newUser), { headers: headers })
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     UsersService.prototype.deleteUser = function (id) {
         return this.http.delete('/api/users/' + id)
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     UsersService.prototype.loginUser = function (userDetails) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('/api/login', JSON.stringify(userDetails), { headers: headers })
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     UsersService.prototype.getLoggedUser = function () {
         return this.http.get('/api/login')
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     UsersService.prototype.logOutUser = function () {
         return this.http.delete('/api/login')
-            .map(function (res) { return res.json(); });
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
     };
     return UsersService;
 }());

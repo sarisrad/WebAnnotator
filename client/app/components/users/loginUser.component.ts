@@ -11,7 +11,7 @@ import { User } from '../../models/User';
 })
 
 export class LoginUserComponent {
-	private loginUserData: object;
+	private loginUserData: Object;
 	private currentUser: User;
 	private loaded: boolean;
 	private isLogged: boolean;
@@ -27,38 +27,45 @@ export class LoginUserComponent {
 	}
 
 	checkIfLogged(){
-		console.log("hey");
 		this.usersService.getLoggedUser()
-			.subscribe(res => {
-				if (res){
-					this.isLogged = true;
-					this.currentUser = res;
-				}
-				else{
+			.subscribe(
+				res => {
+					if (res){
+						this.isLogged = true;
+						this.currentUser = res;
+					}
+					this.loaded = true;
+				},
+				err => {
 					this.isLogged = false;
 					this.currentUser = new User(null);
-				}
-				this.loaded = true;
-			});
+					this.loaded = true;
+				});
 	}
 
 	logout(){
 		this.usersService.logOutUser()
-			.subscribe(res => {
+			.subscribe(
+			res => {
 				this.init();
+			},
+			err => {
+				alert(err._body);
 			});
 	}
 
 	// login with the given information in 'this.loginUserData'
 	loginUser(){
 		this.usersService.loginUser(this.loginUserData)
-			.subscribe(res => {
-				if (res.length == 0) // error with login
-					alert("The given login information is wrong!");
-				else {
-					this.isLogged = true;
-					this.currentUser = res;
-				}
-			});
+			.subscribe(
+				res => {
+					if(res){
+						this.isLogged = true;
+						this.currentUser = res;
+					}
+				},
+				err => {
+					alert(err._body);
+				});
 	}
 }

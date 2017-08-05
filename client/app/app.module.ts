@@ -11,6 +11,7 @@ import { HomePageComponent } from './components/pages/homePage.component';
 import { AboutPageComponent } from './components/pages/aboutPage.component';
 import { WorkspacePageComponent } from './components/pages/workspacePage.component';
 import { ManageCollectionsPageComponent } from './components/pages/manageCollectionsPage.component';
+import { EditUserComponent } from './components/pages/editUser.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { ManageCollectionsPageComponent } from './components/pages/manageCollect
                   HomePageComponent,
                   AboutPageComponent,
                   WorkspacePageComponent,
-                  ManageCollectionsPageComponent
+                  ManageCollectionsPageComponent,
+                  EditUserComponent
                 ],
   bootstrap: [ AppComponent ]
 })

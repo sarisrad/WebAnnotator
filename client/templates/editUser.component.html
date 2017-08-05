@@ -1,0 +1,41 @@
+<div *ngIf="loaded">
+  <div class="container">
+      <div class="col-md-8">
+          <div class="page-description">
+                    <h1>General Account Settings</h1>
+                    <h3>Enter changes at the relevante fileds</h3>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="edit-user-form">
+                
+              <form (submit)="editUser($event)">
+                <div class="form-title">
+                    <h3>Edit Info</h3>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="oldPasswordInput" placeholder="Old Password">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="currentUser.password" type="password" class="form-control" name="newPasswordInput" placeholder="New Password">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="passConfirmation" type="password" class="form-control" name="confirmPasswordInput" placeholder="Confirm Password">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="nameInput" class="form-control" placeholder="{{currentUser.name}}" [(ngModel)]="currentUser.name">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="currentUser.family_name" type="text" name="familyNameInput" class="form-control" placeholder="Family Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="affiliationInput" class="form-control" placeholder={{currentUser.affiliation}} [(ngModel)]="currentUser.affiliation">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+          </div>
+      </div>
+  </div>
+</div>

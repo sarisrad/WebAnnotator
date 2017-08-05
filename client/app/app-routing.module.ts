@@ -5,6 +5,7 @@ import { HomePageComponent } from './components/pages/homePage.component';
 import { AboutPageComponent } from './components/pages/aboutPage.component';
 import { WorkspacePageComponent } from './components/pages/workspacePage.component';
 import { ManageCollectionsPageComponent } from './components/pages/manageCollectionsPage.component';
+import { EditUserComponent } from './components/pages/editUser.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'about',  component: AboutPageComponent },
   { path: 'workspace',  component: WorkspacePageComponent },
   { path: 'manage-collections',  component: ManageCollectionsPageComponent },
+  { path: 'edit-user',  component: EditUserComponent },
 ];
 
 @NgModule({

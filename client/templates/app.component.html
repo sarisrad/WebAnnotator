@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li *ngFor="let tab of tabs" (click)="setActiveTab(tab.route)" [ngClass]="{'active': getActiveTab(tab.route)}">
-          <a routerLink={{tab.route}}>{{ tab.text }}</a>
+            <a routerLink={{tab.route}}>{{ tab.text }}</a>
         </li>
       </ul>
 

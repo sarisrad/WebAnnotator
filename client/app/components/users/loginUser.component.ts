@@ -54,6 +54,8 @@ export class LoginUserComponent {
 			});
 	}
 
+		
+
 	// login with the given information in 'this.loginUserData'
 	loginUser(){
 		this.usersService.loginUser(this.loginUserData)

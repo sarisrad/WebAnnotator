@@ -87,18 +87,26 @@ module.exports.getLoggedUser = function(req, callback) {
 	if (req.session.loggedUserEmail){
 		User.find({ email: req.session.loggedUserEmail }, function(err, obj){
 			if(err){
-				callback(new Error("Error with DB"), null);
+				callback(new Error());
 			}
 			else{
 				currentUser = {};
-				if (obj.length)
+				if (obj.length){
 					currentUser = obj[0];
-				callback(null, currentUser);
+					callback(null, currentUser);
+				}
+				else{
+					error = new Error("The user in the session doesn't longer exist");
+					error.status = 401;
+					callback(error);
+				}
 			}
 		});
 	}
 	else{
-		callback(null, null);
+		error = new Error("There is no logged user");
+		error.status = 401;
+		callback(error);
 	}
 }
 
@@ -114,7 +122,7 @@ module.exports.loginUser = function(req, callback) {
 	emailQuery = { email: query.email }; 
 	User.find( emailQuery, function(err, obj){
 		if(err){
-			callback(new Error("The given email doesn't exist"), null);
+			callback(new Error());
 		}
 		else {
 			if (obj.length){
@@ -124,8 +132,16 @@ module.exports.loginUser = function(req, callback) {
 					req.session.loggedUserEmail = matchingUser.email;
 					callback(null, matchingUser);
 				}
-				else
-					callback(new Error("Incorrect password"), {});
+				else{
+					error = new Error("Incorrect password");
+					error.status = 401;
+					callback(error);
+				}
+			}
+			else {
+				error = new Error("Incorrect email address");
+				error.status = 401;
+				callback(error);
 			}
 		}
 	});

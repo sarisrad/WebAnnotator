@@ -53,5 +53,15 @@ app.use('/api/collections', collectionsRoute);
 app.use('/api/manuscripts', manuscriptsRoute);
 app.use('/api/login', loginRoute);
 
+// Error Handler
+app.use(function (err, req, res, next) {
+    if (!err.message)
+        err.message = "Internal server error";
+    if (!err.status)
+        err.status = 500;
+    console.log(err.stack); // log the error to the terminal
+    res.status(err.status).send(err.message);
+});
+
 app.listen(port);
 console.log('Running on port ' + port + '...');

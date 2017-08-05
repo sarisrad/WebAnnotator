@@ -27,7 +27,6 @@ export class LoginUserComponent {
 	}
 
 	checkIfLogged(){
-		console.log("hey");
 		this.usersService.getLoggedUser()
 			.subscribe(res => {
 				if (res){

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core'
 import { Http, Headers } from '@angular/http'
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class UsersService {
@@ -28,13 +30,19 @@ export class UsersService {
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 		return this.http.post('/api/login', JSON.stringify(userDetails), {headers: headers})
-			.map(res => res.json());
+			.map(res => this.handleErrorsAndContinue(res));
 	}
 
 	getLoggedUser(){
 		return this.http.get('/api/login')
-			.map(res => res.json());
-	}
+			.map(res => res.json())
+	        .catch(e => {
+	            if (e.status === 401) {
+	            	console.log(e);
+	                return Observable.throw('Unauthorized');
+	            }
+	            // do any other checking for statuses here
+	        });	}
 
 	logOutUser(){
 		return this.http.delete('/api/login')

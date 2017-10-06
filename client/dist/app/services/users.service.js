@@ -74,6 +74,18 @@ var UsersService = (function () {
                 return res.json();
         });
     };
+    UsersService.prototype.updateUser = function (existUser) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        console.log(existUser._id);
+        return this.http.put('/api/users/' + existUser._id, JSON.stringify(existUser), { headers: headers })
+            .map(function (res) {
+            if (res.status < 200 || res.status >= 300)
+                throw new Error();
+            else
+                return res.json();
+        });
+    };
     return UsersService;
 }());
 UsersService = __decorate([

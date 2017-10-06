@@ -20,8 +20,7 @@ export class RegisterUserComponent {
 
 	initUser() {
 		this.newUser = new User(null);
-		this.newUser.role = "none";
-		this.passConfirmation = "";		
+		this.newUser.role = "none";	
 	}
 
 	addUser(event){

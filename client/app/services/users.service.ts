@@ -70,4 +70,17 @@ export class UsersService {
 					return res.json();
 		});
 	}
+
+	updateUser(existUser) {
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		console.log(existUser._id);
+		return this.http.put('/api/users/' + existUser._id, JSON.stringify(existUser), {headers: headers})
+			.map(res => {
+				if (res.status < 200 || res.status >= 300)
+					throw new Error();
+				else
+					return res.json();
+		});
+	}
 }

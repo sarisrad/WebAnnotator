@@ -10,17 +10,22 @@ import { User } from '../../models/User';
 
 export class EditUserComponent {
   private currentUser: User;
-  private passConfirmation: String;
+  private newPasswordConfirmation: String;
+  private oldPassword: String;
+  private oldPasswordConfirmation: String;
   private loaded: boolean;
+  private updateUserData: Object;
 
 	constructor(private usersService: UsersService){
 		this.init();
+		this.currentUser.password = "";
     
 	}
 
 	init(){
 		this.loaded = false;
-    this.getCurrentUser();
+    	this.getCurrentUser();
+
 	}
 
 	getCurrentUser(){
@@ -30,9 +35,9 @@ export class EditUserComponent {
 					if (res){
 						this.currentUser = res;
             console.log(this.currentUser);
-            this.currentUser.password = "";
-            this.passConfirmation = "";
+            //this.oldPassword = this.currentUser.password;
             this.loaded = true;
+            console.log(this.oldPassword);
 					}
 				},
 				err => {
@@ -40,8 +45,31 @@ export class EditUserComponent {
 				});
 	}
 
+	
 
- 
+	updateUser(event){
+		event.preventDefault();
+		//if(this.oldPassword == this.oldPasswordConfirmation){
+			if(this.newPasswordConfirmation == this.currentUser.password){
+				this.usersService.updateUser(this.currentUser)
+					.subscribe(
+					res => {
+						this.init();
+						alert("User updated successfully!");
+					},
+					err => {
+						alert(err._body);
+					});
+			}
+			else {
+				alert("Wrong new password confirmation");
+			}
+		//}	
+		//else{
+			//alert("Wrong old password confirmation");
+		//}
+	}
+
 
 }
 

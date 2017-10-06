@@ -20,7 +20,6 @@ var RegisterUserComponent = (function () {
     RegisterUserComponent.prototype.initUser = function () {
         this.newUser = new User_1.User(null);
         this.newUser.role = "none";
-        this.passConfirmation = "";
     };
     RegisterUserComponent.prototype.addUser = function (event) {
         var _this = this;
